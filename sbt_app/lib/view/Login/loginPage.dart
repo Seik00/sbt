@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:sbt_app/bottomNav.dart';
 import 'package:sbt_app/view/dashboard.dart/homepage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -76,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Text('Empower Your  \nBusiness', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),),
+                        child: Text('Empower Your \nBusiness', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),),
                       ),
                     ),
                     Expanded(
@@ -171,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => PageView()),
+                                    builder: (context) => BottomNavBar()),
                               );
                             },
                             child: Center(
@@ -187,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   borderRadius: BorderRadius.circular(10)
                                 ),
-                                height: MediaQuery.of(context).size.height / 15,
+                                padding: EdgeInsets.symmetric(vertical: 12),
                                 alignment: Alignment.center,
                                 child: 
                                 Text(
@@ -218,24 +219,24 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           Spacer(flex: 2,),
                           Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xff3B5998),
-                              borderRadius: BorderRadius.circular(10)
+                            decoration: BoxDecoration(
+                                color: Color(0xff3B5998),
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 12),
+                            alignment: Alignment.center,
+                            child:Text(
+                              'Facebook',
+                              style: TextStyle(color: Colors.white),
+                            )
                           ),
-                          height: MediaQuery.of(context).size.height / 15,
-                          alignment: Alignment.center,
-                          child:
-                          Text(
-                            'Facebook',
-                            style: TextStyle(color: Colors.white),
-                          )),
                           SizedBox(height: 20.0),
                           Container(
                           decoration: BoxDecoration(
                               color: Color(0xffDB4437),
                               borderRadius: BorderRadius.circular(10)
                           ),
-                          height: MediaQuery.of(context).size.height / 15,
+                            padding: EdgeInsets.symmetric(vertical: 12),
                           alignment: Alignment.center,
                           child:
                           Text(

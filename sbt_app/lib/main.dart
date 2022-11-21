@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sbt_app/view/ThemeSetting.dart/model_theme.dart';
 import 'package:sbt_app/view/splashScreen.dart';
+import 'package:provider/provider.dart';
 
 void main() async{
   runApp(MyApp());
@@ -58,28 +60,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (context, child) {
-        return ScrollConfiguration(
-          behavior: MyBehavior(),
-          child: child,
+    return ChangeNotifierProvider(
+      create: (_) => ModelTheme(),
+      child: Consumer<ModelTheme>(
+        builder: (context, ModelTheme themeNotifier, child) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: themeNotifier.isDark
+            ? ThemeData(
+                brightness: Brightness.dark,
+              )
+            : ThemeData(
+              fontFamily: 'OpenSans',
+              primaryColor: Colors.white,
+              textSelectionColor: Color.fromRGBO(65, 182, 230, 1),
+              accentColor: Color.fromRGBO(65, 182, 230, 1),
+              buttonColor: Color.fromRGBO(0, 71, 186, 1),
+              indicatorColor: Color.fromRGBO(255, 212, 95, 1),
+              shadowColor: Color.fromRGBO(171, 172, 175, 1),
+              backgroundColor: Colors.white,
+              splashColor: Colors.white
+            ),
+            home:SplashScreen(),
         );
-      },
-
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        fontFamily: 'OpenSans',
-        // primarySwatch: kPrimaryColor,
-        primaryColor: Colors.white,
-        accentColor: Color.fromRGBO(65, 182, 230, 1),
-        buttonColor: Color.fromRGBO(0, 71, 186, 1),
-        // highlightColor: Color.fromRGBO(242, 169, 0, 1),
-        indicatorColor: Color.fromRGBO(255, 212, 95, 1),
-        shadowColor: Color.fromRGBO(171, 172, 175, 1),
-        backgroundColor: Colors.white,
-        splashColor: Colors.white
-      ),
-      home: SplashScreen(),
+      }),
     );
   }
 }
